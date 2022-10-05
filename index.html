@@ -3740,6 +3740,16 @@ ROTATION = 0x1800 // Mask for the direction bits
         name: "ban",
         args: ["username"],
         info: "Bans a player. They cannot rejoin the world. Only bans them until multiplayer turns off"
+      },
+	  {
+        name: "time",
+        args: ["n"],
+        info: "n is the time to set to. 1000 is a day.",
+      },
+	  {
+        name:"gameMode",
+        args: ["mode"],
+        info: "mode can be: creative, survival, spectator"
       }
     ]
     function getCmd(name){
@@ -3807,6 +3817,15 @@ ROTATION = 0x1800 // Mask for the direction bits
             }
           }else newInvItem(id)
         }
+	}else if(name === "time"){
+        worldTime = (parseInt(split[1]) || 0) * Math.PId / 1000
+      }else if(name === "gameMode"){
+        let m = split[1]
+        p.spectator = false
+        if(m === "creative") survival = false
+        else if(m === "survival") survival = true
+        else if(m === "spectator") p.spectator = p.flying = true
+        else Messages.add("Game mode doesn't exist: "+m)
       }else if(name === "kill"){
         if(split[1] === "@s" || split[1] === username){
           dieMessage = split[2] || (username+" killed themself with the kill command. Why would you do that???")
