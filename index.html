@@ -10981,6 +10981,7 @@ class Generator {
   }
 
   let skyLight = 0
+  let worldTime = 0 //current in-game time
 	let fogDist = 16
 	class World {
 		constructor(type) {
@@ -11518,6 +11519,8 @@ class Generator {
 				this.chunkGenQueue.sort(sortChunks)
 			}
 
+	  worldTime += 0.0005
+
 			if (Key.leftMouse && !Key.control && p.lastBreak < Date.now() - 250 && screen === "play" && !survival) { // if survival breaking isn't instant
 				changeWorldBlock(0)
 			}
@@ -11624,7 +11627,7 @@ class Generator {
         skyLight = 0
         gl.clearColor(0, 0, 0, 1)
       }else{
-			  skyLight = min(max(abs(Date.now() % 1200000 - 600000) / 60000 - 5, 0.1), 1)
+		skyLight = min(max(abs(worldTime % (Math.PId*1.2) - Math.PI) / Math.PI - 0.04, 0.1), 1)
         gl.clearColor(sky[0] * skyLight, sky[1] * skyLight, sky[2] * skyLight, 1)
       }
 			gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT)
