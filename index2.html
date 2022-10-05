@@ -1,10 +1,10 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>MineKhan</title>
+		<title>Haha you saw this</title>
     <base href="https://minekhan.thingmaker.repl.co">
     <!--Metadata-->
-    <meta name="keywords" content="Minekhan"> <!--search "Minekhan" on Google-->
+    <meta name="keywords" content="Minekhan(ish)"> <!--search "Minekhan" on Google-->
     <meta name="description" content="Minekhan with survival and nether and many more features">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" id="themeColor">
@@ -230,7 +230,7 @@
     </div>-->
   </div>
   <div id="loader">
-    <span class="name">MINEKHAN</span><br>
+    <span class="name">MINEKHAN(ish)</span><br>
     <img src="https://data.thingmaker.repl.co/images/loading.gif" id="loadingImg"><br><br>
     <div id="loadBar">
       <div></div>
@@ -3709,8 +3709,8 @@ function MineKhan() {
 
 	//globals
 	//{
-	let version = "Alpha 1.0.3"
-  doc.title = "MineKhan "+version
+	let version = ". ]"
+  doc.title = "[ Minekhan(ish) "+version
   let normReach = 5
   let bigReach = 40
   let reach = normReach // Max distance player can place or break blocks
@@ -4505,12 +4505,8 @@ ROTATION = 0x1800 // Mask for the direction bits
       messageInput.onkeypress = (e) => {
         if(e.key !== "Enter") return
         if(messageInput.value[0] === "/"){
-          if(!cheats){
-            Messages.add("<span style='color:red;'>Commands unavailable</span>")
-          }else{
             Messages.add(messageInput.value)
             runCmd(messageInput.value)
-          }
         }else{
           Messages.write(messageInput.value)
         }
@@ -16490,8 +16486,8 @@ update() {
     rdmSplash()
     setInterval(() => rdmSplash(), 60000)
 		function drawTitle() {
-			let title = "MINEKHAN"
-			let subtext = "JAVASCRIPT EDITION"
+			let title = "MINEKHAN(ish))"
+			let subtext = "Modded by TheGuy888"
 			let font = "VT323,monospace"
 			strokeWeight(1)
 			ctx.textAlign = 'center'
@@ -16549,9 +16545,9 @@ update() {
 			fill(220)
 			ctx.font = "18px VT323"
 			ctx.textAlign = 'left'
-			text("MineKhan " + version, 2, height - 2)
+			text("MineKhan(ish)) " + version, 2, height - 2)
       ctx.textAlign = "right"
-      text("Do not plagarize.", width - 2, height - 2)
+      text("Feel free to plagarize.", width - 2, height - 2)
 		}
 
 		drawScreens.play = () => {
