@@ -3619,7 +3619,7 @@ function MineKhan() {
 
 	async function createDatabase() {
 		return await new Promise(async (resolve, reject) => {
-			let request = window.indexedDB.open("MineKhan", 1)
+			let request = window.indexedDB.open("MineKhan(ish)", 1)
 
 			request.onupgradeneeded = function(event) {
 				let DB = event.target.result
