@@ -4407,7 +4407,7 @@ ROTATION = 0x1800 // Mask for the direction bits
       }else if(name === "showAll"){
         Messages.showAll()
       }else if(name === "dayspeed"){
-        let dayspeed = split[1]
+        let dayspeed = split[1]/1000
       }else if(name === "fromPlayer"){
         fromPlayer()
       }else if(name === "fillToPlayer"){ //args: <block name>
@@ -12802,7 +12802,7 @@ update() {
 				this.loadChunks()
 				this.chunkGenQueue.sort(sortChunks)
 			}
-      worldTime += .1
+      worldTime += dayspeed
 
 			if (Key.leftMouse && !Key.control && p.lastBreak < Date.now() - 250 && screen === "play" && !survival && !entHitbox.ent) { // survival breaking isn't instant
 				changeWorldBlock(0)
