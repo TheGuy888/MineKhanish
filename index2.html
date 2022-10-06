@@ -7675,7 +7675,6 @@ ROTATION = 0x1800 // Mask for the direction bits
     p3.ry = p.ry
     p3.survival = survival
     p3.username = username || ""
-    p3.time = worldTime
     p3.harmEffect = harmEffect
     let prevX
     let prevY
@@ -12910,13 +12909,13 @@ update() {
         else gl.clearColor(0, 0, 0, 1)
 			  gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT)
       }else{
-			  skyLight = .85
+			  skyLight = min(max(abs(worldTime % (Math.PId*1.2) - Math.PI) / Math.PI - 0.04, 0.1), 1)
         if(inWater === 1) gl.clearColor(0,0,255,1)
         else if(inWater === 2) gl.clearColor(255,0,0,1)
         else gl.clearColor(sky[0] * skyLight, sky[1] * skyLight, sky[2] * skyLight, 1)
 			  gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT)
         //skybox render
-		//min(max(abs(worldTime % (Math.PId*1.2) - Math.PI) / Math.PI - 0.04, 0.1), 1)
+		//
         if(inWater === 0){
           /*gl.useProgram(skyboxProgram);
           gl.uniform1f(glCache.skyboxTime, worldTime);
