@@ -12910,7 +12910,7 @@ update() {
         else gl.clearColor(0, 0, 0, 1)
 			  gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT)
       }else{
-			  skyLight = 10
+			  skyLight = 5
         if(inWater === 1) gl.clearColor(0,0,255,1)
         else if(inWater === 2) gl.clearColor(255,0,0,1)
         else gl.clearColor(sky[0] * skyLight, sky[1] * skyLight, sky[2] * skyLight, 1)
