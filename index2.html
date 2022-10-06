@@ -3711,8 +3711,8 @@ function MineKhan() {
 	//{
 	let version = "Alpha 1.0.3"
   doc.title = "MineKhan "+version
+  let dayspeed = 0 
   let normReach = 5
-  let dayspeed = 0
   let bigReach = 40
   let reach = normReach // Max distance player can place or break blocks
 	let sky = [/*0.33, 0.54, 0.72, <originl sky>*/  0.6, 0.8, 0.9] // 0 to 1 RGB color scale
@@ -4313,7 +4313,7 @@ ROTATION = 0x1800 // Mask for the direction bits
       },
 	  {
 		name: "dayspeed",
-		args:["number_1-100"],
+		args: ["number_from_1-100"],
         info: "bigger number = shorter days. default is 0"
 	  },
       {
@@ -12804,7 +12804,8 @@ update() {
 				this.loadChunks()
 				this.chunkGenQueue.sort(sortChunks)
 			}
-      worldTime += daySpeed/1000
+    
+  worldTime += daySpeed/1000
 
 			if (Key.leftMouse && !Key.control && p.lastBreak < Date.now() - 250 && screen === "play" && !survival && !entHitbox.ent) { // survival breaking isn't instant
 				changeWorldBlock(0)
