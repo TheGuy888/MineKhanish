@@ -12802,7 +12802,7 @@ update() {
 				this.loadChunks()
 				this.chunkGenQueue.sort(sortChunks)
 			}
-      worldTime += .5
+      worldTime += .1
 
 			if (Key.leftMouse && !Key.control && p.lastBreak < Date.now() - 250 && screen === "play" && !survival && !entHitbox.ent) { // survival breaking isn't instant
 				changeWorldBlock(0)
