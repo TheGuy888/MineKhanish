@@ -4310,6 +4310,10 @@ ROTATION = 0x1800 // Mask for the direction bits
         name: "showAll",
         info: "Shows all messages."
       },
+	  {
+		name: "dayspeed",
+        info: "bigger number = shorter days. default is 0"
+	  },
       {
         name: "clear",
         info: "Clears shown messages"
@@ -4402,6 +4406,8 @@ ROTATION = 0x1800 // Mask for the direction bits
         Messages.clear()
       }else if(name === "showAll"){
         Messages.showAll()
+      }else if(name === "dayspeed"){
+        let dayspeed = split[1]
       }else if(name === "fromPlayer"){
         fromPlayer()
       }else if(name === "fillToPlayer"){ //args: <block name>
@@ -12796,8 +12802,8 @@ update() {
 				this.loadChunks()
 				this.chunkGenQueue.sort(sortChunks)
 			}
-      
-      worldTime += 0.0005
+      let daySpeed = 0
+      worldTime += daySpeed/1000
 
 			if (Key.leftMouse && !Key.control && p.lastBreak < Date.now() - 250 && screen === "play" && !survival && !entHitbox.ent) { // survival breaking isn't instant
 				changeWorldBlock(0)
