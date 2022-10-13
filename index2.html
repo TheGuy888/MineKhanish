@@ -3714,6 +3714,7 @@ function MineKhan() {
   let normReach = 5
   let bigReach = 40
   let dayspeed = 0
+  let grassDecay = false
   let reach = normReach // Max distance player can place or break blocks
 	let sky = [/*0.33, 0.54, 0.72, <originl sky>*/  0.6, 0.8, 0.9] // 0 to 1 RGB color scale
   function changeSky(type){
@@ -3759,7 +3760,7 @@ function MineKhan() {
 
 	// Configurable and savable settings
 	let settings = {
-		renderDistance: 4,
+		renderDistance: 12,
 		fov: 70, // Field of view in degrees
 		mouseSense: 100 // Mouse sensitivity as a percentage of the default
 	}
@@ -4312,6 +4313,11 @@ ROTATION = 0x1800 // Mask for the direction bits
         info: "Shows all messages."
       },
 	  {
+		name: "grassDecay",
+		args: ["true_or_false"],
+	    info: "controls whether grass gets smothered by blocks above it."
+	  },
+	  {
 		name: "dayspeed",
         info: "1-100. bigger number = shorter days. default is 0"
 	  },
@@ -4409,6 +4415,8 @@ ROTATION = 0x1800 // Mask for the direction bits
         Messages.showAll()
       }else if(name === "dayspeed"){
         dayspeed = split[1]/1000
+      }else if(name === "grassDecay"){
+        grassDecay = true
       }else if(name === "fromPlayer"){
         fromPlayer()
       }else if(name === "fillToPlayer"){ //args: <block name>
@@ -9094,7 +9102,7 @@ class Generator {
 					let x = (rnd >> 8) + this.x
 					let y = (rnd >> 4 & 15) + this.y
 					let z = (rnd & 15) + this.z
-					if (!blockData[world.getBlock(x, y + 1, z)].transparent) {
+					if (!blockData[world.getBlock(x, y + 1, z)].transparent && grassDecay) {
 						world.setBlock(x, y, z, blockIds.dirt, false)
 						return
 					}
