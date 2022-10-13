@@ -4313,9 +4313,9 @@ ROTATION = 0x1800 // Mask for the direction bits
         info: "Shows all messages."
       },
 	  {
-		name: "grassDecay",
+		name: "grassChange",
 		args: ["true_or_false"],
-	    info: "controls whether grass gets smothered by blocks above it."
+	    info: "controls whether grass gets smothered by blocks above it, and whether it spreads"
 	  },
 	  {
 		name: "dayspeed",
@@ -4415,7 +4415,7 @@ ROTATION = 0x1800 // Mask for the direction bits
         Messages.showAll()
       }else if(name === "dayspeed"){
         dayspeed = split[1]/1000
-      }else if(name === "grassDecay"){
+      }else if(name === "grassChange"){
         grassDecay = true
       }else if(name === "fromPlayer"){
         fromPlayer()
@@ -9116,7 +9116,7 @@ class Generator {
 					x += x2
 					y += y2
 
-					if (world.getBlock(x, y, z) === blockIds.dirt && world.getBlock(x, y + 1, z) === blockIds.air) {
+					if (world.getBlock(x, y, z) === blockIds.dirt && world.getBlock(x, y + 1, z) === blockIds.air && grassDecay) {
 						world.setBlock(x, y, z, blockIds.grass, false)
 					}
 				} else if (this.blocks[rnd] === (blockIds.oakSapling | CROSS)){
