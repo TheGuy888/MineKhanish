@@ -7760,6 +7760,25 @@ ROTATION = 0x1800 // Mask for the direction bits
 			p.FOV(settings.fov + 10, 250)
 			p.sprinting = true
 		}
+		if(key.m && hitBox.pos && !survival){
+let block, index
+updateHUD = true
+block = world.getBlock(hitBox.pos[0], hitBox.pos[1], hitBox.pos[2], p.dimension) & 0x3ff
+index = -1
+for(var i=0; i<inventory.hotbar.length; i++){
+if(inventory.hotbar[i].id === block){
+index = i
+break
+}
+}
+if (index >= 0) {
+inventory.hotbarSlot = index
+} else {
+inventory.hotbar[inventory.hotbarSlot] = {id:block, amount:1}
+}
+inventory.showName = 1.5
+inventory.hotbar[inventory.hotbarSlot].animation = 1.5
+}
 
 		if(p.sprinting && p.food > 6) {
 			move.x *= p.sprintSpeed
