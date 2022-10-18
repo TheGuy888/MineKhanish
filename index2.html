@@ -14750,14 +14750,13 @@ update() {
 			case 1:
 				Key.middleMouse = true
 				if (!hitBox.pos) break
-				updateHUD = true
-				block = world.getBlock(hitBox.pos[0], hitBox.pos[1], hitBox.pos[2]) & 0x3ff
-				index = inventory.hotbar.indexOf(block)
-				if (index >= 0) {
-					inventory.hotbarSlot = index
-				} else {
-					inventory.hotbar[inventory.hotbarSlot] = block
-				}
+				let block, index
+updateHUD = true
+block = world.getBlock(hitBox.pos[0], hitBox.pos[1], hitBox.pos[2], p.dimension) & 0x3ff
+index = -1
+for(var i=0; i<inventory.hotbar.length; i++){
+if(inventory.hotbar[i].id === block){
+index = i
 				break
 			case 2:
 				Key.rightMouse = true
