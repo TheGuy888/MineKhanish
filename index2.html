@@ -16732,11 +16732,12 @@ update() {
       if(blockHere === blockIds.Lava) inWater = 2
       
       var blockAtFeet = world.getBlock(p2.x, p2.y-1, p2.z)
-      if(!p.flying && Key[" "] && ((blockHere && blockData[blockHere].ladder) || (blockAtFeet && blockData[blockAtFeet].ladder))){
-        p.velocity.y = 0
-        p.y += 0.04
-      }else if(!p.onGround && p.velocity.y < 0){
-p.velocity.y *= 0.8}
+      if(!p.flying && ((blockHere && blockData[blockHere].ladder) || (blockAtFeet && blockData[blockAtFeet].ladder))){
+p.lastY = p.y
+if (Key[" "]){p.velocity.y = 0.2
+}else if(!p.onGround && p.velocity.y < 0){
+p.velocity.y *= 0.8
+}}
       if(survival){
         if(liquid && blockHere === blockIds.Water){
           if(p.oxygen > 0){
