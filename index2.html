@@ -12813,16 +12813,16 @@ update() {
 			}
       worldTime += dayspeed
 
-			if (Key.leftMouse && !Key.control && p.lastBreak < Date.now() - 250 && screen === "play" && !survival && !entHitbox.ent) { // survival breaking isn't instant
+			if ((Key.leftMouse || Key.f) && !Key.control && p.lastBreak < Date.now() - 250 && screen === "play" && !survival && !entHitbox.ent) { // survival breaking isn't instant
 				changeWorldBlock(0)
 			}
-			if ((Key.rightMouse || Key.leftMouse && Key.control) && p.lastPlace < Date.now() - 250 && !p.autoBuild) {
+			if ((Key.rightMouse || Key.leftMouse && Key.control || Key.c) && p.lastPlace < Date.now() - 250 && !p.autoBuild) {
 				newWorldBlock()
 			}
-			if (Key.leftMouse && p.autoBreak && !Key.control) {
+			if ((Key.leftMouse || Key.f) && p.autoBreak && !Key.control) {
 				changeWorldBlock(0)
 			}
-      if ((Key.rightMouse || Key.leftMouse && Key.control) && p.autoBuild) {
+      if ((Key.rightMouse || Key.leftMouse && Key.control || Key.c) && p.autoBuild) {
 				newWorldBlock()
 			}
 
