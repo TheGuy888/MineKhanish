@@ -3711,7 +3711,7 @@ function MineKhan() {
 	//{
 	let version = "Alpha 1.0.3"
   doc.title = "MineKhan "+version
-  let normReach = 5
+  let normReach = 12
   let bigReach = 40
   let dayspeed = 0
   let grassDecay = false
@@ -8064,7 +8064,7 @@ ROTATION = 0x1800 // Mask for the direction bits
   function cracks(){
     var now = Date.now()
     var block = hitBox.pos ? world.getBlock(hitBox.pos[0], hitBox.pos[1], hitBox.pos[2]) : 0
-    var breaking = Key.leftMouse && block && (crack.delayDone >= crack.delayBetween)
+    var breaking = (Key.leftMouse || Key.f) && block && (crack.delayDone >= crack.delayBetween)
     if(!arrayValues(crack.prevPos, crack.pos)){
       crack.prevPos = crack.pos
       crack.soundTimer = 0
@@ -8093,7 +8093,7 @@ ROTATION = 0x1800 // Mask for the direction bits
       crack.delayDone ++
       crack.breakStart = now
     }
-    if(!Key.leftMouse){
+    if(!Key.leftMouse || !Key.f){
       crack.delayDone = 0
     }
   }
