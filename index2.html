@@ -1519,6 +1519,9 @@ function MineKhan() {
       glassSound: true
     },
     { name: "obsidian", stoneSound:true},
+	{ name: "block o' light", 
+	solid:false,
+	shadow:false}
     {
       name:"redstoneDust",
       onupdate: function(x,y,z){
@@ -14134,7 +14137,7 @@ update() {
     
     
 	}
-  window.invScroll = 0;
+  window.invScroll = 1;
   let draggingInvBar = false
   let invHeight = 0
   var barW = 20
